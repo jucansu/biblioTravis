@@ -1,0 +1,35 @@
+{
+    "name": "Actor",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "apellidos",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "correo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "uvus",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefono",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190504152700",
+    "entityTableName": "actor",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

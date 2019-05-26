@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-sala-estudio-heading">Create or edit a Sala Estudio</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!salaEstudio.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="salaEstudio.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                        [(ngModel)]="salaEstudio.nombre" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_descripcion">Descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                        [(ngModel)]="salaEstudio.descripcion" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_valoracion">Valoracion</label>
+                    <input type="text" class="form-control" name="valoracion" id="field_valoracion"
+                        [(ngModel)]="salaEstudio.valoracion" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_plazasTotales">Plazas Totales</label>
+                    <input type="number" class="form-control" name="plazasTotales" id="field_plazasTotales"
+                        [(ngModel)]="salaEstudio.plazasTotales" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_zona">Zona</label>
+                    <select class="form-control" name="zona" [(ngModel)]="salaEstudio.zona" id="field_zona" >
+                        <option value="NERVION">NERVION</option>
+                        <option value="HELIOPOLIS">HELIOPOLIS</option>
+                        <option value="CARTUJA">CARTUJA</option>
+                        <option value="LOS_REMEDIOS">LOS_REMEDIOS</option>
+                        <option value="MONTEQUINTO">MONTEQUINTO</option>
+                        <option value="CENTRO">CENTRO</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_numEnchufes">Num Enchufes</label>
+                    <input type="number" class="form-control" name="numEnchufes" id="field_numEnchufes"
+                        [(ngModel)]="salaEstudio.numEnchufes" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_hablar">Hablar</label>
+                    <input type="checkbox" class="form-control" name="hablar" id="field_hablar"
+                        [(ngModel)]="salaEstudio.hablar" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_administrativo">Administrativo</label>
+                    <select class="form-control" id="field_administrativo" name="administrativo" [(ngModel)]="salaEstudio.administrativo" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="administrativoOption.id === salaEstudio.administrativo?.id ? salaEstudio.administrativo : administrativoOption" *ngFor="let administrativoOption of administrativos; trackBy: trackAdministrativoById">{{administrativoOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,123 @@
+
+
+<div [ngSwitch]="isAuthenticated()">
+<header role="banner" *ngSwitchCase="true" style="padding-top: 1em;">
+	<h1>Mis bibliotecas favoritas</h1>
+</header>
+
+<div class="container-fluid" *ngSwitchCase="true">
+
+  <div class="row">
+
+    <div class="card-deck">
+      <div class="card" *ngFor="let biblioteca of bibliotecasMias">
+
+
+				<img class="card-img-top" style="height: 21rem" src={{biblioteca.foto}} alt="Card image cap">
+        <div class="card-block" style="padding-left: 1em;padding-top: 1em;padding-right: 1em;padding-bottom: 1em;">
+				  <h4 class="card-title">{{biblioteca.nombre}}</h4>
+          <p class="card-text">Esta biblioteca tiene {{biblioteca.plazasTotales}} plazas totales de las cuales {{biblioteca.numEnchufes}} tienen enchufe.</p>
+          <p class="card-text">Plazas ocupadas actualmente: {{biblioteca.plazasOcupadas}}</p>
+          <p class="card-text">Se encuentra en: {{biblioteca.zona}}</p>
+          <p class="card-text">Actualmente tiene una valoración por parte de los usuarios de  {{biblioteca.valoracion}} estrellas.</p>
+
+          <p class="card-text"><small class="text-muted">Horario: {{biblioteca.horario}}</small></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+<div [ngSwitch]="isAuthenticated()">
+    <div class="card mb-10" style="max-width: 3000px;" style="padding-left: 50px;margin-top: 50px;padding-right: 50px;">
+        <h1 class="display-4">Todas las bibliotecas</h1>
+
+        <div class="my-3 p-3 bg-white rounded shadow-sm" *ngFor="let biblioteca of bibliotecas">
+            <h2 class="border-bottom border-gray pb-2 mb-0">{{biblioteca.nombre}}</h2>
+            <div class="row no-gutters" style="width: auto; height:auto" style="padding-left: 50px;margin-top: 50px;padding-right: 50px;position: relative">
+                <div class="col-md-5">
+                    <img src={{biblioteca.foto}} width="400" height="300" alt="...">
+                </div>
+                <div class="col-md-7">
+                    <p class="mb-0">{{biblioteca.descripcion}}</p>
+                    <div style="margin-top: 5em;margin-left: 5em;">
+                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+                            <button data-toggle="tooltip" data-placement="top" title="Plazas libres" style="margin-left:2%;width: 4em;height: 4em;border-radius: 50%;" class="btn btn-success">{{biblioteca.plazasTotales - biblioteca.plazasOcupadas}}</button>
+                            <button data-toggle="tooltip" data-placement="top" title="Plazas ocupadas" style="margin-left:2%;width: 4em;height: 4em;border-radius: 50%;" type="button" class="btn btn-danger">{{biblioteca.plazasOcupadas}}</button>
+
+
+
+                            <!-- BOTON ACCESO BILBIOTECAS POPUP -->
+
+                        </div>
+                        <button (click)="openModalDialogDetalle(biblioteca)" style="margin-left:30%;width: 12em;height: 4em;border-radius: 5%;" type="button" class="btn btn-primary">Conoce más sobre ella!</button>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- After clicking the button open the modal dialog using open/close event binding methods -->
+            <div class="backdrop" [ngStyle]="{'display':display3}"></div>
+
+            <!-- modal -->
+            <div class="modal"  tabindex="-1" role="dialog" [ngStyle]="{'display':display3}">
+                <!-- modal-dialog -->
+                <div class="modal-dialog modal-lg" role="document">
+                    <!-- modal-content -->
+                    <div class="modal-content">
+                        <!-- modal-header -->
+
+
+                        <!-- modal-body -->
+                        <div class="modal-body">
+
+                                <header role="banner">
+                                        <h1>{{detalleNombre}}</h1>
+                                    </header>
+
+                                    <div class="container-fluid">
+                                      <div class="row">
+                                        <div class="card-deck">
+                                          <div class="card">
+                                            <img  style="height:427.3px" class="card-img-top" src={{detalleFoto}} alt="Card image cap">
+                                            <div class="card-block">
+                                              <h4 class="card-title">Horario: {{detalleHora}}</h4>
+                                              <p class="card-text">Esta biblioteca tiene {{detallePlazasTotales}} plazas totales de las cuales {{detalleEnchufes}} tienen enchufe.</p>
+                                              <p class="card-text">Plazas disponibles actualmente: {{detallePlazasLibres}}</p>
+                                              <p class="card-text">Plazas ocupadas actualmente: {{detallePlazasOcupadas}}</p>
+                                              <p class="card-text">Se encuentra en: {{detalleZona}}</p>
+                                              <p class="card-text">Actualmente tiene una valoración por parte de los usuarios de  {{detalleValoracion}} estrellas.</p>
+                                              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+                                            </div>
+                                          </div>
+
+                                        </div>
+                                      </div>
+                                    </div>
+
+
+
+
+
+                        </div>
+
+                        <!-- modal-footer -->
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-info" (click)="llevarAMapa()">Abrir dirección</button>
+
+                            <button type="button" class="btn btn-outline-dark" (click)="closeModalDialogDetalle()">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

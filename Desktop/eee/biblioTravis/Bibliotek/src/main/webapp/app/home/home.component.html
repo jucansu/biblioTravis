@@ -1,0 +1,284 @@
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-slide="prev">
+            <img src="/content/images/cabecera.jpg" class="d-block w-100" alt="...">
+        </div>
+
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<!-- After clicking the button open the modal dialog using open/close event binding methods -->
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+
+<!-- modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+    <!-- modal-dialog -->
+    <div class="modal-dialog" role="document">
+        <!-- modal-content -->
+        <div class="modal-content">
+            <!-- modal-header -->
+            <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" (click)="closeModalDialog()"><span aria-hidden="true">&times;</span></button>
+                <!-- <h4 class="modal-title">Login</h4> -->
+            </div>
+
+            <!-- modal-body -->
+            <div class="modal-body">
+                <img src={{qr}} class="d-block w-100" alt="...">
+            </div>
+
+            <!-- modal-footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="pausa(account.id)">Pausar</button>
+                <button type="button" class="btn btn-default" (click)="closeModalDialog()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="alert alert-warning">
+    <span id="home-logged-message" *ngIf="account"> La biblioteca de humanidades cerrará el día 7 por obras. </span>
+</div>
+<div *ngIf="noMostrarAdmin" class="card mb-10" style="width: auto; height:auto" style="padding-left: 50px;margin-top: 50px;padding-right: 50px;position: relative">
+    <div class="row no-gutters" [ngSwitch]="isAuthenticated()">
+
+        <div class="col-md-8" *ngSwitchCase="true">
+            <h1 class="display-4">Registra tu entrada</h1>
+            <div [ngSwitch]="isAuthenticated()">
+                <div class="alert alert-success">
+                    <span id="home-logged-message" *ngIf="account"> Hola "{{account.login}}" !! </span>
+                </div>
+            </div>
+            <p class="lead">Para acceder a nuestras instalaciones necesitarás registrar tu entrada. Puedes acceder a la sala con tu carnet de la Universidad de Sevilla simplemente acercando el código QR generado, acercándolo al lector del torno.</p>
+
+        </div>
+        <div class="col-md-12" *ngSwitchCase="false">
+            <h1 class="display-4">Registra tu entrada</h1>
+
+            <div class="alert alert-warning">
+                <span>No tienes cuenta todavía?</span>&nbsp;
+                <a class="alert-link" routerLink="register">Regístrate en un instante!!</a>
+            </div>
+
+            <p class="lead">Para acceder a nuestras instalaciones necesitarás registrar tu entrada. Puedes acceder a la sala con tu carnet de la Universidad de Sevilla simplemente acercando el código QR generado, acercándolo al lector del torno.</p>
+
+        </div>
+        <!-- *******************************QR************************************ -->
+        <div class="col-md-4" *ngSwitchCase="true">
+            <div *ngIf="!estudianteEsta">
+                <button style="background-image: url('content/images/entra.png');height: 200px;width: 200px;background-size: cover;  margin: 0 auto;
+  display: flex;margin-top: 6%;margin-bottom: 6%;" type="button" (click)="openModalDialog()" class="card-img" alt="...">
+
+            </div>
+            <div *ngIf="estudianteEsta">
+
+                <button style="background-image: url('content/images/sale.png');height: 200px;width: 200px;background-size: cover;  margin: 0 auto;
+  display: flex;margin-top: 6%;margin-bottom: 6%;" type="button" (click)="openModalDialog()" class="card-img" alt="...">
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ******************************************************************* -->
+</div>
+
+<div>
+    <div class="card mb-10" style="max-width: 3000px;" style="padding-left: 50px;margin-top: 50px;padding-right: 50px;">
+        <h1 class="display-4">Bibliotecas mejor valoradas</h1>
+
+        <div class="my-3 p-3 bg-white rounded shadow-sm" *ngFor="let biblioteca of bibliotecas">
+            <h2 class="border-bottom border-gray pb-2 mb-0">{{biblioteca.nombre}}
+              <div *ngIf="biblioteca.valoracion>4.5">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+                <span class="fa fa-star " style="color: orange"></span>
+                <span class="fa fa-star " style="color: orange"></span>
+                <span class="fa fa-star " style="color: orange"></span>
+                <span class="fa fa-star " style="color: orange"></span>
+                <span class="fa fa-star " style="color: orange"></span>
+              </div>
+            <div *ngIf="biblioteca.valoracion>=3.5 && biblioteca.valoracion<4.5">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+                <span class="fa fa-star " style="color: orange"></span>
+                <span class="fa fa-star " style="color: orange"></span>
+                <span class="fa fa-star " style="color: orange"></span>
+                <span class="fa fa-star " style="color: orange"></span>
+                <span class="fa fa-star "></span>
+            </div>
+            <div *ngIf="biblioteca.valoracion>=2.5 && biblioteca.valoracion<3.5">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+                <span class="fa fa-star " style="color: orange"></span>
+                <span class="fa fa-star " style="color: orange"></span>
+                <span class="fa fa-star " style="color: orange"></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+            </div>
+            <div *ngIf="biblioteca.valoracion>=1.5 && biblioteca.valoracion<2.5">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+                <span class="fa fa-star " style="color: orange"></span>
+                <span class="fa fa-star " style="color: orange"></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+            </div>
+            <div *ngIf="biblioteca.valoracion>=0 && biblioteca.valoracion<1.5">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+                <span class="fa fa-star " style="color: orange"></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+            </div></h2>
+            <div class="row no-gutters" style="width: auto; height:auto" style="padding-left: 50px;margin-top: 50px;padding-right: 50px;position: relative">
+                <div class="col-md-5">
+                    <img src={{biblioteca.foto}} width="400" height="300" alt="...">
+                </div>
+                <div class="col-md-7">
+                    <p class="mb-0">{{biblioteca.descripcion}}</p>
+                    <div style="margin-top: 5em;
+    margin-left: 5em;">
+                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+                            <button data-toggle="tooltip" data-placement="top" title="Plazas libres" style="margin-left:2%;width: 4em;height: 4em;border-radius: 50%;" class="btn btn-success">{{biblioteca.plazasDisp}}</button>
+                            <button data-toggle="tooltip" data-placement="top" title="Plazas ocupadas" style="margin-left:2%;width: 4em;height: 4em;border-radius: 50%;" type="button" class="btn btn-danger">{{biblioteca.plazasOcupadas}}</button>
+
+                            <!-- BOTON ACCESO BILBIOTECAS POPUP -->
+
+                        </div>
+                        <button (click)="openModalDialogDetalle(biblioteca)" style="margin-left:30%;width: 12em;height: 4em;border-radius: 5%;" type="button" class="btn btn-primary">Conoce más sobre ella!</button>
+                        <button *ngIf="!mia" (click)="anadirMia()" style="border-radius: 5%;" type="button" class="btn btn-btn-secondary">Añade a favoritas</button>
+                        <button *ngIf="mia" (click)="quitarMia()" style="border-radius: 5%;" type="button" class="btn btn-btn-secondary">quitar</button>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- After clicking the button open the modal dialog using open/close event binding methods -->
+            <div class="backdrop" [ngStyle]="{'display':display2}"></div>
+
+            <!-- modal -->
+            <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display2}">
+                <!-- modal-dialog -->
+                <div class="modal-dialog modal-lg" role="document">
+                    <!-- modal-content -->
+                    <div class="modal-content">
+                        <!-- modal-header -->
+
+                        <!-- modal-body -->
+                        <div class="modal-body">
+
+                            <header role="banner">
+                                <h1>{{detalleNombre}}</h1>
+                            </header>
+
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="card-deck">
+                                        <div class="card">
+                                            <img style="height:427.3px" class="card-img-top" src={{detalleFoto}} alt="Card image cap">
+                                            <div class="card-block">
+                                                <h4 class="card-title">Horario: {{detalleHora}}</h4>
+                                                <p class="card-text">Esta biblioteca tiene {{detallePlazasTotales}} plazas totales de las cuales {{detalleEnchufes}} tienen enchufe. </p>
+                                                <p class="card-text">Plazas disponibles actualmente: {{detallePlazasLibres}} </p>
+                                                <p class="card-text">Plazas ocupadas actualmente: {{detallePlazasOcupadas}} </p>
+                                                <p class="card-text">Se encuentra en: {{detalleZona}} </p>
+                                                <p class="card-text">Actualmente tiene una valoración por parte de los usuarios de {{detalleValoracion}} estrellas. </p>
+
+                                                <p class="card-text">Vota!</p>
+
+                                                <button data-toggle="tooltip" data-placement="top" title="Voto favorable" (click)="votoPositivo(detalleId)" style="border-radius: 5%; background: green" type="button" class="btn btn-primary"><i class="fa fa-check"></button>
+                                              <button data-toggle="tooltip" data-placement="top" title="Voto negativo" (click)="votoNegativo(detalleId)" style="border-radius: 5%; background: red" type="button" class="btn btn-primary"><i class="fa fa-close"></button>
+
+                                              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+                                            </div>
+                                          </div>
+
+                                        </div>
+                                      </div>
+                                    </div>
+
+                        </div>
+
+                        <!-- modal-footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-info" (click)="llevarAMapa()">Abrir dirección</button>
+
+                            <button type="button" class="btn btn-outline-dark" (click)="closeModalDialogDetalle()">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+  <!-- After clicking the button open the modal dialog using open/close event binding methods -->
+  <div class="backdrop" [ngStyle]="{'display':display3}"></div>
+
+  <!-- modal -->
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display3}">
+      <!-- modal-dialog -->
+      <div class="modal-dialog modal-lg"  style="padding: 14em !important;" role="document">
+          <!-- modal-content -->
+          <div class="modal-content" style>
+              <!-- modal-header -->
+
+              <!-- modal-body -->
+              <div class="modal-body">
+
+                  <div class="container-fluid">
+                      <div class="row">
+                          <div class="card-deck">
+
+                                   <h3>Biblioteca añadida a favoritas</h3>
+                                  
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+
+                           <!-- modal-footer -->
+              <div class="modal-footer">
+                 
+
+                <button type="button" class="btn btn-outline-dark" (click)="closeModalDialoganadir()">Close</button>
+
+            </div>
+
+              </div>
+
+             
+          </div>
+      </div>
+  </div>
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>

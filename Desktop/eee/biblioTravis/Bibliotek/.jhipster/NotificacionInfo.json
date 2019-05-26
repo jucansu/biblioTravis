@@ -1,0 +1,56 @@
+{
+    "name": "NotificacionInfo",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fechaInicio",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "fechaFin",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "bibliotecario",
+            "otherEntityName": "bibliotecario",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "administrativo",
+            "otherEntityName": "administrativo",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "biblioteca",
+            "otherEntityName": "biblioteca",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "salaEstudio",
+            "otherEntityName": "salaEstudio",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190504152710",
+    "entityTableName": "notificacion_info",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

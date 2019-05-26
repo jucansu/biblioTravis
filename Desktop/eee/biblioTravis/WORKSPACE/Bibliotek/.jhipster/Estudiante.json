@@ -1,0 +1,34 @@
+{
+    "name": "Estudiante",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "reporte",
+            "otherEntityRelationshipName": "estudiante",
+            "javadoc": "Estudiante",
+            "relationshipName": "reporte"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "biblioteca",
+            "otherEntityRelationshipName": "estudiante",
+            "relationshipName": "biblioteca"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "aviso",
+            "otherEntityRelationshipName": "estudiante",
+            "relationshipName": "aviso"
+        }
+    ],
+    "changelogDate": "20190504152701",
+    "entityTableName": "estudiante",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

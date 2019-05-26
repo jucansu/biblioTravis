@@ -1,0 +1,64 @@
+{
+    "name": "SalaEstudio",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "valoracion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "plazasTotales",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "zona",
+            "fieldType": "TipoZona",
+            "fieldValues": "NERVION,HELIOPOLIS,CARTUJA,LOS_REMEDIOS,MONTEQUINTO,CENTRO"
+        },
+        {
+            "fieldName": "numEnchufes",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "hablar",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "administrativo",
+            "otherEntityName": "administrativo",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "notificacionInfo",
+            "otherEntityRelationshipName": "salaEstudio",
+            "javadoc": "SalaEstudio",
+            "relationshipName": "notificacionInfo"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "reporte",
+            "otherEntityRelationshipName": "salaEstudio",
+            "relationshipName": "reporte"
+        }
+    ],
+    "changelogDate": "20190504152709",
+    "entityTableName": "sala_estudio",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,35 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "com.bibliotek"
+        },
+        "jhipsterVersion": "5.8.2",
+        "applicationType": "monolith",
+        "baseName": "bibliotek",
+        "packageName": "com.bibliotek",
+        "packageFolder": "com/bibliotek",
+        "serverPort": "8080",
+        "authenticationType": "jwt",
+        "cacheProvider": "ehcache",
+        "enableHibernateCache": false,
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "mysql",
+        "prodDatabaseType": "mysql",
+        "searchEngine": false,
+        "messageBroker": false,
+        "serviceDiscoveryType": "eureka",
+        "buildTool": "maven",
+        "enableSwaggerCodegen": false,
+        "jwtSecretKey": "MjcyZjA3MDk4N2JkMmEyY2Y5ZWMzYWQ0NzQ0YjM0MGIxYzAzYzI5MTUyOGRmNTA2ZjA0ZDE4YTg3ODE4MzQxMjhlZmM1ZmYzZTI4Y2QzY2FhMzE3YzdiZTBhM2Y5ZmJhMGZlYjFmNjBlOGM5YjI2YjA5N2RhODc4NjZkM2I2ODQ=",
+        "clientFramework": "angularX",
+        "useSass": false,
+        "clientPackageManager": "npm",
+        "testFrameworks": [],
+        "jhiPrefix": "jhi",
+        "entitySuffix": "",
+        "dtoSuffix": "DTO",
+        "otherModules": [],
+        "enableTranslation": false
+    }
+}

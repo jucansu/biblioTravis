@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity NotificacionInfo.
+    -->
+    <changeSet id="20190504152710-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="bibliotecario_id"
+                                 baseTableName="notificacion_info"
+                                 constraintName="fk_notificacion_info_bibliotecario_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bibliotecario"/>
+
+        <addForeignKeyConstraint baseColumnNames="administrativo_id"
+                                 baseTableName="notificacion_info"
+                                 constraintName="fk_notificacion_info_administrativo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="administrativo"/>
+
+        <addForeignKeyConstraint baseColumnNames="biblioteca_id"
+                                 baseTableName="notificacion_info"
+                                 constraintName="fk_notificacion_info_biblioteca_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="biblioteca"/>
+
+        <addForeignKeyConstraint baseColumnNames="sala_estudio_id"
+                                 baseTableName="notificacion_info"
+                                 constraintName="fk_notificacion_info_sala_estudio_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sala_estudio"/>
+
+    </changeSet>
+</databaseChangeLog>

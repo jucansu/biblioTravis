@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="correccion">
+            <h2><span>Correccion</span> {{correccion.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nombre</span></dt>
+                <dd>
+                    <span>{{correccion.nombre}}</span>
+                </dd>
+                <dt><span>Descripcion</span></dt>
+                <dd>
+                    <span>{{correccion.descripcion}}</span>
+                </dd>
+                <dt><span>Fecha</span></dt>
+                <dd>
+                    <span>{{correccion.fecha}}</span>
+                </dd>
+                <dt><span>Bibliotecario</span></dt>
+                <dd>
+                    <div *ngIf="correccion.bibliotecario">
+                        <a [routerLink]="['/bibliotecario', correccion.bibliotecario?.id, 'view']">{{correccion.bibliotecario?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Biblioteca</span></dt>
+                <dd>
+                    <div *ngIf="correccion.biblioteca">
+                        <a [routerLink]="['/biblioteca', correccion.biblioteca?.id, 'view']">{{correccion.biblioteca?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/correccion', correccion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

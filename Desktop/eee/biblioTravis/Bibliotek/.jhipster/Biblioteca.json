@@ -1,0 +1,82 @@
+{
+    "name": "Biblioteca",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "javadoc": "The firstname attribute.",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "valoracion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "plazasTotales",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "plazasDisponibles",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "zona",
+            "fieldType": "TipoZona",
+            "fieldValues": "NERVION,HELIOPOLIS,CARTUJA,LOS_REMEDIOS,MONTEQUINTO,CENTRO"
+        },
+        {
+            "fieldName": "numEnchufes",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "salas",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "estudiante",
+            "otherEntityName": "estudiante",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "correccion",
+            "otherEntityRelationshipName": "biblioteca",
+            "javadoc": "Biblioteca",
+            "relationshipName": "correccion"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "reporte",
+            "otherEntityRelationshipName": "biblioteca",
+            "relationshipName": "reporte"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "bibliotecario",
+            "otherEntityRelationshipName": "biblioteca",
+            "relationshipName": "bibliotecario"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "notificacionInfo",
+            "otherEntityRelationshipName": "biblioteca",
+            "relationshipName": "notificacionInfo"
+        }
+    ],
+    "changelogDate": "20190504152708",
+    "javadoc": "The Employee entity.",
+    "entityTableName": "biblioteca",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

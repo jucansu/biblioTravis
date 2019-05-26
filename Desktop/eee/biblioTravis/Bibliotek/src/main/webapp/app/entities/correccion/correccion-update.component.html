@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-correccion-heading">Create or edit a Correccion</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!correccion.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="correccion.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                        [(ngModel)]="correccion.nombre" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_descripcion">Descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                        [(ngModel)]="correccion.descripcion" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fecha">Fecha</label>
+                    <div class="input-group">
+                        <input id="field_fecha" type="text" class="form-control" name="fecha" ngbDatepicker  #fechaDp="ngbDatepicker" [(ngModel)]="correccion.fecha"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_bibliotecario">Bibliotecario</label>
+                    <select class="form-control" id="field_bibliotecario" name="bibliotecario" [(ngModel)]="correccion.bibliotecario" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="bibliotecarioOption.id === correccion.bibliotecario?.id ? correccion.bibliotecario : bibliotecarioOption" *ngFor="let bibliotecarioOption of bibliotecarios; trackBy: trackBibliotecarioById">{{bibliotecarioOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_biblioteca">Biblioteca</label>
+                    <select class="form-control" id="field_biblioteca" name="biblioteca" [(ngModel)]="correccion.biblioteca" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="bibliotecaOption.id === correccion.biblioteca?.id ? correccion.biblioteca : bibliotecaOption" *ngFor="let bibliotecaOption of bibliotecas; trackBy: trackBibliotecaById">{{bibliotecaOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

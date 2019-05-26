@@ -1,0 +1,12 @@
+# target programming lamguage
+language: java
+
+# JDK versios support
+jdk:
+  - oraclejdk8
+addons:
+  mysql: "5.0.67"
+sudo: required
+
+services:
+  - mysql

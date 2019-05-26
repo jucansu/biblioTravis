@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Correccion.
+    -->
+    <changeSet id="20190504152707-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="bibliotecario_id"
+                                 baseTableName="correccion"
+                                 constraintName="fk_correccion_bibliotecario_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bibliotecario"/>
+
+        <addForeignKeyConstraint baseColumnNames="biblioteca_id"
+                                 baseTableName="correccion"
+                                 constraintName="fk_correccion_biblioteca_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="biblioteca"/>
+
+    </changeSet>
+</databaseChangeLog>

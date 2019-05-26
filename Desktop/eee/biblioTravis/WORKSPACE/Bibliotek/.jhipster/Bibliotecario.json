@@ -1,0 +1,34 @@
+{
+    "name": "Bibliotecario",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "correccion",
+            "otherEntityRelationshipName": "bibliotecario",
+            "javadoc": "Bibliotecario",
+            "relationshipName": "correccion"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "notificacionInfo",
+            "otherEntityRelationshipName": "bibliotecario",
+            "relationshipName": "notificacionInfo"
+        },
+        {
+            "relationshipName": "biblioteca",
+            "otherEntityName": "biblioteca",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190504152702",
+    "entityTableName": "bibliotecario",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

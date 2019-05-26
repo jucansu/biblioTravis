@@ -1,0 +1,138 @@
+entity Actor {
+	nombre String,
+    apellidos String,
+    correo String,
+    uvus String,
+    telefono String
+}
+
+entity Estudiante  {
+	
+}
+
+entity Bibliotecario  {
+	
+}
+
+entity Admin  {
+	
+}
+
+entity Administrativo  {
+	
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Aviso {
+	nombre String,
+	descripcion String,
+	fecha LocalDate
+}
+
+entity Reporte {
+	nombre String,
+	descripcion String,
+	fecha LocalDate
+}
+
+
+entity Correccion {
+	nombre String,
+	descripcion String,
+	fecha LocalDate
+}
+
+/**
+ * The Employee entity.
+ */
+entity Biblioteca {
+	/**
+	* The firstname attribute.
+	*/
+	nombre String,
+	descripcion String,
+	valoracion String,
+	plazasTotales Integer,
+	plazasDisponibles Integer,
+	zona TipoZona,
+	numEnchufes Integer, 
+    salas Integer
+}
+
+
+
+enum TipoZona {
+    NERVION, HELIOPOLIS, CARTUJA, LOS_REMEDIOS, MONTEQUINTO, CENTRO
+}
+
+entity SalaEstudio {
+	nombre String,
+	descripcion String,
+	valoracion String,
+	plazasTotales Integer,
+	zona TipoZona,
+	numEnchufes Integer, 
+    hablar Boolean
+}
+
+entity NotificacionInfo {
+	nombre String,
+	descripcion String,
+	fechaInicio LocalDate,
+	fechaFin LocalDate,
+	
+}
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany{
+	/**
+	*Estudiante
+	*/
+	Estudiante{reporte} to Reporte,
+	Estudiante{biblioteca} to Biblioteca,
+    Estudiante{aviso} to Aviso,
+    
+    /**
+	*Bibliotecario
+	*/
+    Bibliotecario{correccion} to Correccion,
+   	Bibliotecario{notificacionInfo} to NotificacionInfo,
+    
+     /**
+	*Administrativo
+	*/
+    Administrativo{notificacionInfo} to NotificacionInfo,
+    Administrativo{salaEstudio} to SalaEstudio,
+    
+     /**
+	*Biblioteca
+	*/
+    Biblioteca{correccion} to Correccion,
+    Biblioteca{reporte} to Reporte,
+    Biblioteca{bibliotecario} to Bibliotecario,
+    Biblioteca{notificacionInfo} to NotificacionInfo,
+    
+     /**
+	*SalaEstudio
+	*/
+    SalaEstudio{notificacionInfo} to NotificacionInfo,
+    SalaEstudio{reporte} to Reporte,
+}
+
+
+
+
+
+// Set pagination options
+paginate Biblioteca, SalaEstudio with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

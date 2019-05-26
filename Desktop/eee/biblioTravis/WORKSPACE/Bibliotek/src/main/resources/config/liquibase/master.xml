@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <!-- <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152700_added_entity_Actor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152701_added_entity_Estudiante.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152702_added_entity_Bibliotecario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152703_added_entity_Admin.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152704_added_entity_Administrativo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152705_added_entity_Aviso.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152706_added_entity_Reporte.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152707_added_entity_Correccion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152708_added_entity_Biblioteca.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152709_added_entity_SalaEstudio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152710_added_entity_NotificacionInfo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152702_added_entity_constraints_Bibliotecario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152705_added_entity_constraints_Aviso.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152706_added_entity_constraints_Reporte.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152707_added_entity_constraints_Correccion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152708_added_entity_constraints_Biblioteca.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152709_added_entity_constraints_SalaEstudio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190504152710_added_entity_constraints_NotificacionInfo.xml" relativeToChangelogFile="false"/> -->
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

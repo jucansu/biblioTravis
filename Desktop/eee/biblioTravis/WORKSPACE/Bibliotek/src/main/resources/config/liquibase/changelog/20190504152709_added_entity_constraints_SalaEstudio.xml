@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity SalaEstudio.
+    -->
+    <changeSet id="20190504152709-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="administrativo_id"
+                                 baseTableName="sala_estudio"
+                                 constraintName="fk_sala_estudio_administrativo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="administrativo"/>
+
+    </changeSet>
+</databaseChangeLog>

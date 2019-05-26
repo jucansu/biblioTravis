@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="biblioteca">
+            <h2><span>Biblioteca</span> {{biblioteca.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span ngbTooltip="The firstname attribute.">Nombre</span></dt>
+                <dd>
+                    <span>{{biblioteca.nombre}}</span>
+                </dd>
+                <dt><span>Descripcion</span></dt>
+                <dd>
+                    <span>{{biblioteca.descripcion}}</span>
+                </dd>
+                <dt><span>Valoracion</span></dt>
+                <dd>
+                    <span>{{biblioteca.valoracion}}</span>
+                </dd>
+                <dt><span>Plazas Totales</span></dt>
+                <dd>
+                    <span>{{biblioteca.plazasTotales}}</span>
+                </dd>
+                <dt><span>Plazas Disponibles</span></dt>
+                <dd>
+                    <span>{{biblioteca.plazasDisponibles}}</span>
+                </dd>
+                <dt><span>Zona</span></dt>
+                <dd>
+                    <span>{{biblioteca.zona}}</span>
+                </dd>
+                <dt><span>Num Enchufes</span></dt>
+                <dd>
+                    <span>{{biblioteca.numEnchufes}}</span>
+                </dd>
+                <dt><span>Salas</span></dt>
+                <dd>
+                    <span>{{biblioteca.salas}}</span>
+                </dd>
+                <dt><span>Estudiante</span></dt>
+                <dd>
+                    <div *ngIf="biblioteca.estudiante">
+                        <a [routerLink]="['/estudiante', biblioteca.estudiante?.id, 'view']">{{biblioteca.estudiante?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/biblioteca', biblioteca.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

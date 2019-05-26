@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-actor-heading">Create or edit a Actor</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!actor.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="actor.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                        [(ngModel)]="actor.nombre" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_apellidos">Apellidos</label>
+                    <input type="text" class="form-control" name="apellidos" id="field_apellidos"
+                        [(ngModel)]="actor.apellidos" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_correo">Correo</label>
+                    <input type="text" class="form-control" name="correo" id="field_correo"
+                        [(ngModel)]="actor.correo" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_uvus">Uvus</label>
+                    <input type="text" class="form-control" name="uvus" id="field_uvus"
+                        [(ngModel)]="actor.uvus" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_telefono">Telefono</label>
+                    <input type="text" class="form-control" name="telefono" id="field_telefono"
+                        [(ngModel)]="actor.telefono" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

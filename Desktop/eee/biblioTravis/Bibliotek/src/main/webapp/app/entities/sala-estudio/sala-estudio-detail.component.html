@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="salaEstudio">
+            <h2><span>Sala Estudio</span> {{salaEstudio.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nombre</span></dt>
+                <dd>
+                    <span>{{salaEstudio.nombre}}</span>
+                </dd>
+                <dt><span>Descripcion</span></dt>
+                <dd>
+                    <span>{{salaEstudio.descripcion}}</span>
+                </dd>
+                <dt><span>Valoracion</span></dt>
+                <dd>
+                    <span>{{salaEstudio.valoracion}}</span>
+                </dd>
+                <dt><span>Plazas Totales</span></dt>
+                <dd>
+                    <span>{{salaEstudio.plazasTotales}}</span>
+                </dd>
+                <dt><span>Zona</span></dt>
+                <dd>
+                    <span>{{salaEstudio.zona}}</span>
+                </dd>
+                <dt><span>Num Enchufes</span></dt>
+                <dd>
+                    <span>{{salaEstudio.numEnchufes}}</span>
+                </dd>
+                <dt><span>Hablar</span></dt>
+                <dd>
+                    <span>{{salaEstudio.hablar}}</span>
+                </dd>
+                <dt><span>Administrativo</span></dt>
+                <dd>
+                    <div *ngIf="salaEstudio.administrativo">
+                        <a [routerLink]="['/administrativo', salaEstudio.administrativo?.id, 'view']">{{salaEstudio.administrativo?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/sala-estudio', salaEstudio.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

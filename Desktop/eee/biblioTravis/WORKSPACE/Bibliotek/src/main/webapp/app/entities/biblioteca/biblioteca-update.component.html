@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-biblioteca-heading">Create or edit a Biblioteca</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!biblioteca.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="biblioteca.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nombre" ngbTooltip="The firstname attribute.">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                        [(ngModel)]="biblioteca.nombre" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_descripcion">Descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                        [(ngModel)]="biblioteca.descripcion" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_valoracion">Valoracion</label>
+                    <input type="text" class="form-control" name="valoracion" id="field_valoracion"
+                        [(ngModel)]="biblioteca.valoracion" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_plazasTotales">Plazas Totales</label>
+                    <input type="number" class="form-control" name="plazasTotales" id="field_plazasTotales"
+                        [(ngModel)]="biblioteca.plazasTotales" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_plazasDisponibles">Plazas Disponibles</label>
+                    <input type="number" class="form-control" name="plazasDisponibles" id="field_plazasDisponibles"
+                        [(ngModel)]="biblioteca.plazasDisponibles" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_zona">Zona</label>
+                    <select class="form-control" name="zona" [(ngModel)]="biblioteca.zona" id="field_zona" >
+                        <option value="NERVION">NERVION</option>
+                        <option value="HELIOPOLIS">HELIOPOLIS</option>
+                        <option value="CARTUJA">CARTUJA</option>
+                        <option value="LOS_REMEDIOS">LOS_REMEDIOS</option>
+                        <option value="MONTEQUINTO">MONTEQUINTO</option>
+                        <option value="CENTRO">CENTRO</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_numEnchufes">Num Enchufes</label>
+                    <input type="number" class="form-control" name="numEnchufes" id="field_numEnchufes"
+                        [(ngModel)]="biblioteca.numEnchufes" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_salas">Salas</label>
+                    <input type="number" class="form-control" name="salas" id="field_salas"
+                        [(ngModel)]="biblioteca.salas" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_estudiante">Estudiante</label>
+                    <select class="form-control" id="field_estudiante" name="estudiante" [(ngModel)]="biblioteca.estudiante" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="estudianteOption.id === biblioteca.estudiante?.id ? biblioteca.estudiante : estudianteOption" *ngFor="let estudianteOption of estudiantes; trackBy: trackEstudianteById">{{estudianteOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

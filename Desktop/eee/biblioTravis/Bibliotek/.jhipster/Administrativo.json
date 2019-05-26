@@ -1,0 +1,28 @@
+{
+    "name": "Administrativo",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "notificacionInfo",
+            "otherEntityRelationshipName": "administrativo",
+            "javadoc": "Administrativo",
+            "relationshipName": "notificacionInfo"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "salaEstudio",
+            "otherEntityRelationshipName": "administrativo",
+            "relationshipName": "salaEstudio"
+        }
+    ],
+    "changelogDate": "20190504152704",
+    "entityTableName": "administrativo",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

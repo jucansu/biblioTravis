@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="actor">
+            <h2><span>Actor</span> {{actor.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nombre</span></dt>
+                <dd>
+                    <span>{{actor.nombre}}</span>
+                </dd>
+                <dt><span>Apellidos</span></dt>
+                <dd>
+                    <span>{{actor.apellidos}}</span>
+                </dd>
+                <dt><span>Correo</span></dt>
+                <dd>
+                    <span>{{actor.correo}}</span>
+                </dd>
+                <dt><span>Uvus</span></dt>
+                <dd>
+                    <span>{{actor.uvus}}</span>
+                </dd>
+                <dt><span>Telefono</span></dt>
+                <dd>
+                    <span>{{actor.telefono}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/actor', actor.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

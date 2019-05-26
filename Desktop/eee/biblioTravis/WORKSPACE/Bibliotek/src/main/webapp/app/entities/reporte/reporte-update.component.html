@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-reporte-heading">Create or edit a Reporte</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!reporte.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="reporte.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                        [(ngModel)]="reporte.nombre" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_descripcion">Descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                        [(ngModel)]="reporte.descripcion" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fecha">Fecha</label>
+                    <div class="input-group">
+                        <input id="field_fecha" type="text" class="form-control" name="fecha" ngbDatepicker  #fechaDp="ngbDatepicker" [(ngModel)]="reporte.fecha"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_estudiante">Estudiante</label>
+                    <select class="form-control" id="field_estudiante" name="estudiante" [(ngModel)]="reporte.estudiante" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="estudianteOption.id === reporte.estudiante?.id ? reporte.estudiante : estudianteOption" *ngFor="let estudianteOption of estudiantes; trackBy: trackEstudianteById">{{estudianteOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_biblioteca">Biblioteca</label>
+                    <select class="form-control" id="field_biblioteca" name="biblioteca" [(ngModel)]="reporte.biblioteca" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="bibliotecaOption.id === reporte.biblioteca?.id ? reporte.biblioteca : bibliotecaOption" *ngFor="let bibliotecaOption of bibliotecas; trackBy: trackBibliotecaById">{{bibliotecaOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_salaEstudio">Sala Estudio</label>
+                    <select class="form-control" id="field_salaEstudio" name="salaEstudio" [(ngModel)]="reporte.salaEstudio" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="salaEstudioOption.id === reporte.salaEstudio?.id ? reporte.salaEstudio : salaEstudioOption" *ngFor="let salaEstudioOption of salaestudios; trackBy: trackSalaEstudioById">{{salaEstudioOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
